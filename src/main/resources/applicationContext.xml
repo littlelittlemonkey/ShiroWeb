@@ -62,7 +62,14 @@
 	    <property name="loginUrl" value="/index.jsp"/>
 	    <!-- 权限认证失败，则跳转到指定页面 -->  
 	    <property name="unauthorizedUrl" value="/unauthor.jsp"/>  
-	    <!-- Shiro连接约束配置,即过滤链的定义 -->  
+	    <!-- Shiro连接约束配置,即过滤链的定义 -->
+		<!--
+            URL路径自上而下进行匹配
+         -->
+		<!--
+            anon过滤器处理原则 ：随便访问
+            authc需要进行权限认证
+         -->
 	    <property name="filterChainDefinitions">  
 	        <value>  
 	             /login=anon

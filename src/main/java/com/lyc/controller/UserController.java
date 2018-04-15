@@ -13,22 +13,11 @@ import com.lyc.entity.User;
 
 
 
-/**
- * �û�Controller��
- * @author Administrator
- *
- */
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
 	
-	/**
-	 * �û���¼
-	 * @param user
-	 * @param request
-	 * @return
-	 */
 	@RequestMapping("/login")
 	public String login(User user,HttpServletRequest request){
 		Subject subject=SecurityUtils.getSubject();
@@ -39,12 +28,12 @@ public class UserController {
 			System.out.println("sessionId:"+session.getId());
 			System.out.println("sessionHost:"+session.getHost());
 			System.out.println("sessionTimeout:"+session.getTimeout());
-			session.setAttribute("info", "session������");
+			session.setAttribute("info", "登录");
 			return "redirect:/success.jsp";
 		}catch(Exception e){
 			e.printStackTrace();
 			request.setAttribute("user", user);
-			request.setAttribute("errorMsg", "�û������������");
+			request.setAttribute("errorMsg", "登录失败");
 			return "index";
 		}
 	}
