@@ -19,9 +19,25 @@ public class MyRealm extends AuthorizingRealm{
 
 	@Resource
 	private UserService userService;
-	
+
 	/**
-	 * Ϊ����ǰ��¼���û������ɫ��Ȩ
+	 * 验证当前登录的用户
+	 * 其实就是验证用户名密码
+	 */
+	@Override
+	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+		String userName=(String)token.getPrincipal();
+		User user=userService.getByUserName(userName);
+		if(user!=null){
+			AuthenticationInfo authcInfo=new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),"xx");
+			return authcInfo;
+		}else{
+			return null;
+		}
+	}
+
+	/**
+	 * 为当限前登录的用户授予角色和权
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -30,21 +46,6 @@ public class MyRealm extends AuthorizingRealm{
 		authorizationInfo.setRoles(userService.getRoles(userName));
 		authorizationInfo.setStringPermissions(userService.getPermissions(userName));
 		return authorizationInfo;
-	}
-
-	/**
-	 * ��֤��ǰ��¼���û�
-	 */
-	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		String userName=(String)token.getPrincipal();
-			User user=userService.getByUserName(userName);
-			if(user!=null){
-				AuthenticationInfo authcInfo=new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),"xx");
-				return authcInfo;
-			}else{
-				return null;				
-			}
 	}
 
 }

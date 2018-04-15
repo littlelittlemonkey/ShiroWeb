@@ -3,10 +3,6 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="JUnitGeneratorProjectSettings">
-    <option name="combineGetterAndSetter" value="true" />
-    <option name="selectedTemplateKey" value="JUnit 4" />
-  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
