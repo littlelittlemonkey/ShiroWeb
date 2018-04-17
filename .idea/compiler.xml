@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ShiroWeb" target="1.8" />
+      <module name="ShiroWeb" target="1.6" />
       <module name="ShiroWeb2" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -29,6 +29,7 @@ public class MyRealm extends AuthorizingRealm{
 		String userName=(String)token.getPrincipal();
 		User user=userService.getByUserName(userName);
 		if(user!=null){
+//			将用户名，密码存放到AuthenticationInfo
 			AuthenticationInfo authcInfo=new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),"xx");
 			return authcInfo;
 		}else{
